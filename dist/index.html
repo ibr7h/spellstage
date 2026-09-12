@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4030a5">
+  <meta name="description" content="Step up to Spellstage: practice, take a progressive challenge, play the Game Show, or compete with friends.">
+  <meta property="og:title" content="Spellstage — Every letter counts">
+  <meta property="og:description" content="A spelling game with spoken words, four ways to play, progressive challenges, and themes for every age.">
+  <title>Spellstage — Spelling Game</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%234030a5'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-family='Arial' font-size='29' font-weight='bold' fill='%23e6f28b'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./app.bundle.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#game">Skip to game</a>
+  <header class="site-header">
+    <a href="./" class="brand" aria-label="Spellstage home"><span class="brand-symbol" aria-hidden="true">S<span>✦</span></span><span>spellstage<span class="brand-period">.</span></span></a>
+    <div class="header-actions"><span class="language">ENGLISH SPELLING</span><button class="text-button header-tool" id="learner-button" aria-label="Choose learner" title="Choose learner"><span data-icon="user"></span><span id="learner-label">Learner</span></button><button class="text-button header-tool" id="progress-button" aria-label="View progress" title="View progress"><span data-icon="chart"></span><span>Progress</span></button><button class="text-button theme-button header-tool" id="theme-button" aria-label="Choose theme" title="Choose theme"><span data-icon="palette"></span><span id="theme-label">Student</span></button><button class="text-button header-tool" id="help-button"><span data-icon="help"></span><span>How to play</span></button><button class="icon-button" id="voice-button" aria-label="Voice and accessibility settings" title="Voice and accessibility settings"><span data-icon="settings"></span></button></div>
+  </header>
+  <main class="app-layout">
+    <aside class="sidebar" aria-label="Game setup">
+      <p class="eyebrow">YOUR PLAYLIST</p>
+      <nav class="modes" aria-label="Game mode">
+        <button class="mode" data-mode="practice" aria-pressed="false"><span class="mode-icon" data-icon="book"></span><span><strong>Practice</strong><small>Find your rhythm</small></span></button>
+        <button class="mode" data-mode="challenge" aria-pressed="false"><span class="mode-icon" data-icon="flag"></span><span><strong>Challenge</strong><small>Climb the tracks</small></span></button>
+        <button class="mode active" data-mode="show" aria-pressed="true"><span class="mode-icon" data-icon="mic"></span><span><strong>Game Show</strong><small>Take the spotlight</small></span><span class="mode-indicator" aria-hidden="true"></span></button>
+        <button class="mode" data-mode="competition" aria-pressed="false"><span class="mode-icon" data-icon="users"></span><span><strong>Competition</strong><small>Play with friends</small></span></button>
+      </nav>
+      <fieldset class="difficulty"><legend class="eyebrow">CHOOSE YOUR LEVEL</legend>
+        <label><input type="radio" name="level" value="easy"><span><span class="level-bars" aria-hidden="true">▂<i>▄▆</i></span>Everyday<small>Build confidence</small></span></label>
+        <label><input type="radio" name="level" value="medium" checked><span><span class="level-bars" aria-hidden="true">▂▄<i>▆</i></span>Challenger<small>A little trickier</small></span></label>
+        <label><input type="radio" name="level" value="hard"><span><span class="level-bars" aria-hidden="true">▂▄▆</span>Wordsmith<small>Bring your A-game</small></span></label>
+      </fieldset>
+      <div id="mode-options"></div>
+      <button class="learner-card" id="sidebar-learner-button" aria-label="Change learner and word path"><span class="mode-icon" data-icon="user"></span><span><small class="eyebrow">LEARNER &amp; WORD PATH</small><strong id="sidebar-learner-name">Learner</strong><em id="sidebar-path-name">Beginner English</em></span><span data-icon="arrow"></span></button>
+      <div class="sidebar-tip"><span data-icon="headphones"></span><strong>Listen closely.</strong><p>You can hear a word again as many times as you like.</p></div>
+    </aside>
+    <section class="main-column" aria-label="Spelling game">
+      <div class="game-heading"><div><div class="eyebrow"><span class="small-star" aria-hidden="true">✦</span> THE SPELLING CHALLENGE</div><h1 id="mode-title">Game Show</h1><p id="mode-description">Ten words. Three chances. Your moment to shine.</p></div><span class="level-badge" id="level-badge">Challenger</span></div>
+      <div id="player-board" class="player-board" hidden></div>
+      <section id="game" class="game-card" aria-label="Current word" tabindex="-1">
+        <div class="stage-top"><div class="round-label"><span class="eyebrow" id="round-label">WORD 01 <span>/ 10</span></span><div class="round-dots" id="round-dots" aria-hidden="true"></div></div><div class="stage-score"><span data-icon="sparkles"></span><strong id="score">0</strong><span>pts</span></div></div>
+        <div id="stage-content" class="stage-content"></div>
+        <div class="stage-bottom"><span id="lives" class="lives"></span><span id="stage-note">A fresh set of words every game</span><button class="text-button" id="pause-button" hidden><span data-icon="pause"></span>Pause</button></div>
+      </section>
+      <section class="keyboard-panel" aria-label="Spelling keyboard"><div class="keyboard-heading"><span><span data-icon="keyboard"></span> YOUR KEYBOARD, YOUR CALL</span><small>Tap the letters or use your keyboard</small></div><div id="keyboard" class="keyboard"></div></section>
+      <div class="below-game"><span data-icon="headphones"></span><span>Sound on. Distractions off. You've got this.</span><span class="word-count">120 words + your own lists</span></div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>Small words. Big wins.</span><span><button class="footer-install" id="install-button" type="button"><span data-icon="download"></span> Install app</button> · An independent game inspired by <a href="https://www.iplay.com/en/games/merriam-websters-spell-jam/" target="_blank" rel="noopener noreferrer">Spell-Jam</a>.</span></footer>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-top"><h2 id="modal-title"></h2><button class="icon-button" id="modal-close" aria-label="Close dialog"><span data-icon="close"></span></button></div><div id="modal-content"></div></dialog>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <noscript><p class="noscript">Please enable JavaScript to play Spellstage.</p></noscript>
+</body>
+</html>

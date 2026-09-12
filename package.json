@@ -1,0 +1,10 @@
+{
+  "name": "spellstage-pwa",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-bundle.mjs",
+    "test": "node tests/game.test.mjs"
+  }
+}
